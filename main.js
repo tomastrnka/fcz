@@ -98,8 +98,6 @@ Apify.main(async () => {
                 // Process detail page
                 
                 // Extract data
-                try{await page.waitFor('[itemprop="ratingCount"]');}
-                catch(e){console.log('No rating count found.');}
                 await Apify.utils.puppeteer.injectJQuery(page);
                 const myResult = await page.evaluate(extractData);
                 myResult.url = request.url;
