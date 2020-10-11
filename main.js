@@ -18,7 +18,7 @@ const isObject = (val) => typeof val === 'object' && val !== null && !Array.isAr
 
 // Company page data extraction
 const extractData = () => {
-    const title = $('[itemprop="name"]').text().trim();
+    const title = $('[itemprop="title"]').text().trim();
     const address = $('[itemprop="address"]').text().trim();
     const desc = $('[itemprop="description"]').text().trim();
     const categories = $('.category').toArray().map(c => c.textContent.trim());
