@@ -20,25 +20,16 @@ const isObject = (val) => typeof val === 'object' && val !== null && !Array.isAr
 const extractData = () => {
     const title = $('[itemprop="name"]').text().trim();
     const address = $('[itemprop="address"]').text().trim();
-    const lat = $('[itemprop="latitude"]').attr('content');
-    const lon = $('[itemprop="longitude"]').attr('content');
     const desc = $('[itemprop="description"]').text().trim();
     const categories = $('.category').toArray().map(c => c.textContent.trim());
-    const rating = $('[itemprop="ratingValue"]').attr('content');
-    const rCount = $('[itemprop="ratingCount"]').text().trim();
-    const ratingCount = rCount ? parseInt(rCount) : 0;
     const phone = $('[itemprop="telephone"]').text().trim();
     const emails = $('.companyMail').toArray().map(e => e.textContent.trim());
     const websites = $('.companyUrl').toArray().map(e => e.textContent.trim());
     const result = {
         "title": title,
         "address": address.replace(/[\n\t]+/g, ''),
-        "latitude": lat ? parseFloat(lat) : null,
-        "longitude": lon ? parseFloat(lon) : null,
         "description": desc,
         "categories": categories,
-        "rating": (ratingCount && rating) ? parseInt(rating)/20 : null,
-        "ratingcount": ratingCount,
         "phone": phone,
         "emails": emails,
         "website": websites[0] || null
